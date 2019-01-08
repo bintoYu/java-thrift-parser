@@ -18,13 +18,14 @@ enum ForestAnimal { BIRD, MOUSE, TIGER }
 enum WaterAnimal { FISH, ALLIGATOR }
 
 struct Monkey {
-    1: string name,
-    2: i32 age,
+    1: optional string name,
+    2: required i32 age = 1313,
     3: Family ancestry,
     4: list<string> offspring,
     5: map<string,bool> food_likes,
     6: set<Activity> favorite_activities,
     7: BestFriend bff,
+    8: gorillas.Gorilla gor,
 }
 
 union BestFriend {
@@ -36,7 +37,11 @@ exception TooTired {
     1: string message;
 }
 
-service Chimp {
+service BaseService {
+    bool ping(1:i16 time)
+}
+
+service Chimp extends BaseService {
     void call(),
     bool is_munching(),
     bool do_activity(1:Activity activity) throws (1:TooTired tooTired),

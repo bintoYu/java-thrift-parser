@@ -349,7 +349,7 @@ public class ThriftAst extends BaseParser<Object> {
 
     Rule Inheritance() {
         // No direct effect on value stack
-        return Sequence("extends ", Identifier());
+        return Sequence("extends ", Identifier(),actions.pop());
     }
 
     /**

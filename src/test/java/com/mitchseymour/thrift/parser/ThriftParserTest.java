@@ -28,6 +28,21 @@ public class ThriftParserTest {
     }
 
     @Test
+    public void ast2() throws IOException {
+        try {
+            Optional<DocumentNode> parsedDocument = parseThriftFileAst("/tutorial2.thrift");
+            assert(parsedDocument.isPresent());
+            DocumentNode document = parsedDocument.get();
+//        assert(document.headers.size() > 0);
+//        assert(document.definitions.size() > 0);
+            System.out.println(document.printTree());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
     public void structAast() throws IOException {
         Optional<DocumentNode> parsedDocument = parseThriftFileAst("/struct.thrift");
         assert (parsedDocument.isPresent());

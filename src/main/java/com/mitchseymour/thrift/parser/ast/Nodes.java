@@ -282,6 +282,14 @@ public class Nodes {
             return String.format("Exception: %s", identifier.name);
         }
 
+        @Override
+        public java.util.List<AstNode> getChildren() {
+            ArrayList<AstNode> children = new ArrayList<>();
+            AstNode args = new FunctionArgumentsNode(fields);
+            children.add(args);
+            return children;
+        }
+
         ExceptionNode(IdentifierNode identifier, List<FieldNode> fields) {
             super(identifier);
             this.fields = fields;
