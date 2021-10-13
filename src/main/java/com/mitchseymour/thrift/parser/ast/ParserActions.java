@@ -535,8 +535,8 @@ class ParserActions {
                 } else {
                     cppType = Optional.empty();
                 }
-                FieldTypeNode keyType = (FieldTypeNode) valueStack.pop();
                 FieldTypeNode valueType = (FieldTypeNode) valueStack.pop();
+                FieldTypeNode keyType = (FieldTypeNode) valueStack.pop();
                 MapTypeNode node = new MapTypeNode(keyType, valueType, cppType);
                 valueStack.push(node);
                 return true;
