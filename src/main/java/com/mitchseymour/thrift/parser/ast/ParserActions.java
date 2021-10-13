@@ -95,7 +95,8 @@ class ParserActions {
             @Override
             public boolean run(Context context) {
                 ValueStack valueStack = context.getValueStack();
-                IncludeNode node = new IncludeNode(context.getMatch().replaceAll("^\"|\"$", ""));
+                Nodes.LiteralNode literalNode = (Nodes.LiteralNode) valueStack.pop();
+                Nodes.IncludeNode node = new Nodes.IncludeNode(literalNode.value.replaceAll("^\"|\"$", ""));
                 valueStack.push(node);
                 return true;
             }
