@@ -6,6 +6,7 @@ import static com.mitchseymour.thrift.parser.ThriftParser.*;
 import com.mitchseymour.thrift.parser.ast.Nodes;
 import com.mitchseymour.thrift.parser.ast.Nodes.DocumentNode;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -22,6 +23,17 @@ public class ThriftParserTest {
         Optional<DocumentNode> parsedDocument = parseThriftFileAst("/testmonkey.thrift");
         assert(parsedDocument.isPresent());
         DocumentNode document = parsedDocument.get();
+        assert(document.headers.size() > 0);
+        assert(document.definitions.size() > 0);
+        System.out.println(document.printTree());
+    }
+
+    @Test
+    public void ast2Map() throws IOException {
+        Map<String, DocumentNode> documentNodeMap = ThriftParser.parseThriftFileAst2Map("/testmonkey.thrift");
+//        Optional<DocumentNode> parsedDocument = parseThriftFileAst("/test1.idl");
+        assert(!documentNodeMap.isEmpty());
+        Nodes.DocumentNode document = documentNodeMap.get("this");
         assert(document.headers.size() > 0);
         assert(document.definitions.size() > 0);
         System.out.println(document.printTree());
