@@ -25,6 +25,13 @@ struct Monkey {
     5: map<string,bool> food_likes,
     6: set<Activity> favorite_activities,
     7: BestFriend bff,
+    8: gorillas.Gorilla gorilla,
+    9: list<gorillas.Gorilla> gorillaList,
+    10: list<list<string>> listlistTest,
+    11: list<set<string>> listsetTest,
+    12: set<list<string>> setlistTest,
+    13: map<string,list<string>> maplistTest,
+    14: map<string,list<gorillas.Gorilla>> maplisti32Test,
 }
 
 union BestFriend {

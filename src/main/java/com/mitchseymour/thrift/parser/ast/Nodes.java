@@ -26,10 +26,10 @@ public class Nodes {
 
     public static class VoidNode extends AstNode {}
 
-    public static class CollectionNode extends NamedNode {
+    public static class CollectionNode extends AstNode {
 
         public CollectionNode(FieldTypeNode fieldType) {
-            super((IdentifierNode) fieldType.fieldType);
+//            super((IdentifierNode) fieldType.fieldType);
         }
 
     }
